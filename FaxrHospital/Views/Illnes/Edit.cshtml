@@ -1,0 +1,35 @@
+﻿@model Illnes
+
+@{
+    ViewData["Title"] = "Изменение";
+}
+
+<div class="d-flex justify-content-md-start">
+    <div class="card text-white bg-info mb-3">
+        <div class="card-header">Изменение болезни</div>
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label class="p-1" for="floatingInput" asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="p-1" for="floatingInput" asp-for="Description"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="btn-group" role="group">
+                    <a asp-controller="Illnes" asp-action="Index" class="btn btn-dark w-100">Вернуться</a>
+                    <button type="submit" class="btn btn-warning w-100">Изменить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}

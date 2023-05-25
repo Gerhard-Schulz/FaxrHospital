@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Illnes>
+
+@{
+    ViewData["Title"] = "Болезни";
+}
+
+<div class="row justify-content-end w-100 mt-4">
+    <div class="col-6">
+        <form asp-action="Index" method="get">
+            <div class="form-actions no-color">
+                <p>
+                    <strong class="w-100 pb-1" style="font-size: 1.1rem">Поиск:</strong>
+                    <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" class="w-50 border-info" />
+                    <button type="submit" class="btn btn-info w-25">Искать</button>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+<table class="table table-sm table-hover w-100 mt-3 pb-2 cell-centered">
+    <thead>
+        <tr>
+            <th>
+                <h2 class="text-center text-primary">
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" class="link link-primary page-link">Болезни</a>
+                </h2>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var illnes in Model)
+        {
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-2">
+                            <a asp-controller="Illnes" asp-action="Edit" asp-route-id="@illnes.Id" class="btn btn-outline-warning w-100">Редактировать</a>
+                        </div>
+                        <div class="col-3">
+                            @illnes.Name
+                        </div>
+                        <div class="col-5">
+                            @illnes.Description
+                        </div>
+                        <div class="col-2">
+                            <a asp-controller="Illnes" asp-action="Delete" asp-route-id="@illnes.Id" class="btn btn-outline-danger w-100">Удалить</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

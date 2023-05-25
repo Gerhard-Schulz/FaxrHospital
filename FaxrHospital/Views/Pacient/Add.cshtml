@@ -1,0 +1,59 @@
+﻿@model Pacient
+
+@{
+    ViewData["Title"] = "Добавление";
+}
+
+<div class="d-flex justify-content-md-start">
+    <div class="card text-white bg-info mb-3">
+        <div class="card-header">Новый пациент</div>
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label class="p-1" for="floatingInput" asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="p-1" for="floatingInput" asp-for="Sex"></label>
+                    <select asp-for="Sex" class="form-select">
+                        <option disabled selected></option>
+                        <option>Мужской</option>
+                        <option>Женский</option>
+                    </select>
+                    <span asp-validation-for="Sex" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="p-1" for="floatingInput" asp-for="Passport"></label>
+                    <input asp-for="Passport" class="form-control" />
+                    <span asp-validation-for="Passport" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="p-1" for="floatingInput" asp-for="Phone"></label>
+                    <input asp-for="Phone" class="form-control"/>
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="p-1" for="floatingInput" asp-for="Birthday"></label>
+                    <input asp-for="Birthday" class="form-control" type="date" />
+                    <span asp-validation-for="Birthday" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="p-1" for="floatingInput" asp-for="Adress"></label>
+                    <input asp-for="Adress" class="form-control" />
+                    <span asp-validation-for="Adress" class="text-danger"></span>
+                </div>
+                <div class="btn-group" role="group">
+                    <a asp-controller="Pacient" asp-action="Index" class="btn btn-dark w-100">Вернуться</a>
+                    <button type="submit" class="btn btn-success w-100">Создать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Doctor>
+
+@{
+    ViewData["Title"] = "Доктора";
+}
+
+<div class="row justify-content-end w-100 mt-4">
+    <div class="col-6">
+        <form asp-action="Index" method="get">
+            <div class="form-actions no-color">
+                <p>
+                    <strong class="w-100 pb-1" style="font-size: 1.1rem">Поиск:</strong>
+                    <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" class="w-50 border-info" />
+                    <button type="submit" class="btn btn-info w-25">Искать</button>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+<h2 class="text-center text-primary">Доктора</h2>
+<table class="table table-sm table-hover w-100 mt-3 pb-2 cell-centered">
+    <thead class="table-info">
+        <tr>
+            <th></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" class="link link-primary page-link">ФИО</a></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["SpecSortParm"]" class="link link-primary page-link">Специализация</a></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["QualSortParm"]" class="link link-primary page-link">Квалификация</a></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["OtdelSortParm"]" class="link link-primary page-link">Номер отделения</a></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Doctor" asp-action="Edit" asp-route-id="@doctor.Id" class="btn btn-outline-warning w-100">Редактировать</a>
+                </td>
+                <td>
+                    @doctor.Name
+                </td>
+                <td>
+                    @doctor.Speciality
+                </td>
+                <td>
+                    @doctor.Qualification
+                </td>
+                <td>
+                    @doctor.OtdelenieId
+                </td>
+                <td>
+                    <a asp-controller="Doctor" asp-action="Delete" asp-route-id="@doctor.Id" class="btn btn-outline-danger w-100">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
